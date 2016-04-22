@@ -1,0 +1,73 @@
+{
+  "TipoDTE": 33,
+  "Folio": 394,
+  "FchEmis": "2015-04-14",
+  "IndNoRebaja": 0,
+  "TipoDespacho": 0,
+  "IndTraslado": 0,
+  "TpoImpresion": "",
+  "IndServicio": 0,
+  "MntBruto": 0,
+  "FmaPago": 0,
+    "MntPagos:":
+    [
+    {"FchPago": 2015-04-14"","MntPago": 0}
+    ],
+  "FchVenc": "",
+  "RUTEmisor": "80790400-0",
+  "RznSoc": "REYSCALLAH NASER Y HNO S.A.",
+  "GiroEmis": "LIBRERIA, ESCRITORIO, BAZAR, PAQUETERIA Y HOGAR",
+  "CdgSIISucur": 004894439,
+  "DirOrigen": "SALVADOR SANFUENTES DEL 2788 AL 2778",
+  "CmnaOrigen": "SANTIAGO",
+  "CiudadOrigen": "SANTIAGO",
+  "CdgVendedor": "16",
+  "NomVendedor": "JUAN MARTIN CURRIN CAYUMAN",
+  "RUTMandante": "",
+  "RUTRecep": "14463704-6",
+  "RznSocRecep": "BEATRIZ PATRICIA GONZALEZ LABRA",
+  "GiroRecep": "ARTICULOS  DE CUMPLEAÑOS",
+  "DirRecep": "EL PINAR 212",
+  "CmnaRecep": "SAN BERNARDO",
+  "CiudadRecep": "SANTIAGO",
+  "TelRecep": "7913287",
+  "RUTSolicita": "",
+  "RUTTrans": "",
+  "NombreChofer": "",
+  "DirDest": "",
+  "CmnaDest": "",
+  "MntNeto":68003,
+  "MntExe": 0,
+  "MntBase": 0,
+  "MntMargenCom": 0,
+  "TasaIVA": 19,
+  "IVA": 12921,
+    "imptoReten":
+    [
+    ],
+  "IVANoRet": 0,
+  "CredEC": 0,
+  "GrntDep": 0,
+  "ValComNeto": 0,
+  "ValComExe": 0,
+  "ValComIVA": 0,
+  "MntTotal": 80924,
+  "MontoNF": 0,
+    "detalle":
+    [
+      { "NroLinDet": 1, "TpoCodigo": "PLU", "VlrCodigo": 8091, "TpoDocLiq": " ", "IndExe": 0, "NmbItem": "PAPEL CELOFAN TRANSPARENTE VEGETAL", "UnmdItem": "C/U", "QtyItem": 20, "PrcItem": 100.8403, "DescuentoPct": 0, "DescuentoMonto": 0, "CodImpAdic": 0, "MontoItem": 2017},
+      { "NroLinDet": 2, "TpoCodigo": "PLU", "VlrCodigo": 8086, "TpoDocLiq": " ", "IndExe": 0, "NmbItem": "PAPEL CREPE SULTAN ESCOLAR 50*180", "UnmdItem": "C/U", "QtyItem": 1200, "PrcItem": 68.9076, "DescuentoPct": 0, "DescuentoMonto": 0, "CodImpAdic": 0, "MontoItem": 82689}
+    ],
+    "dscRcgGlobal":
+    [
+      {"NroLinDR": 1, "TpoMov": "D", "GlosaDR": "", "TpoValor": "%", "ValorDR": 19.7183 ,"IndExeDR": 0}
+    ],
+    "Referencia":
+    [
+      {"NroLinRef": 0, "TpoDocRef": "SET", "IndGlobal": 0, "FolioRef": "",  "RUTOtr": "", "IdAdicOtr": "", "FchRef": "", "CodRef": 0, "RazonRef": "CASO  311171-1"}
+    ],
+    "Comisiones":
+    [
+      { "NroLinCom": 0, "TipoMovim": "", "Glosa": "", "ValComNeto": 0, "ValComExe": 0, "ValComIVA": 0 }
+    ]
+}
