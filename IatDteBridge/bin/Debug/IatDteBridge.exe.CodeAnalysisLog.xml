@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\bin\Debug\IatDteBridge.exe">
+   <Modules>
+    <Module Name="iatdtebridge.exe">
+     <Namespaces>
+      <Namespace Name="IatDteBridge">
+       <Types>
+        <Type Name="Caf" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#exist(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="Caf.cs" Line="256">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'Caf.exist(string)' podría contener las siguientes variables: 'nomxml'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#save(IatDteBridge.Caf)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="Caf.cs" Line="235">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'Caf.save(Caf)' podría contener las siguientes variables: 'cafmodel.cafxml', 'cafmodel.fecha', 'cafmodel.tipoDte', 'cafmodel.dirCaf', 'cafmodel.folioInicial', 'cafmodel.folioFinal', 'cafmodel.rutEmpresa', 'cafmodel.nomXml'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ConnectDb" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#ConnectSqlite()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Proporcionar argumentos correctos a los métodos de formato" Category="Microsoft.Usage" CheckId="CA2241" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="MissingFormatItem" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\ClasesDb" File="ConnectDb.cs" Line="104">El método 'ConnectDb.ConnectSqlite()' llama a 'Console.WriteLine(string, object)' y no proporciona un elemento de formato para el argumento "1". La cadena de formato proporcionada es: '"Problemas al conectar a la base datos"'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Folio" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#getFolio(System.Int32,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="Folio.cs" Line="81">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'Folio.getFolio(int, string)' podría contener las siguientes variables: 'tDte', 'rutEmisor'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#incrementaSgte(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="Folio.cs" Line="58">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'Folio.incrementaSgte(string, string)' podría contener las siguientes variables: 'tDte', 'rutEmisor'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="FormEmisor" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#button_guardar_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\Formulario" File="FormEmisor.cs" Line="121">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'FormEmisor.button_guardar_Click(object, EventArgs)' podría contener las siguientes variables: 'this.textBox_RUTEmisor.Text', 'this.textBox_RznSoc.Text', 'this.textBox_GiroEmis.Text', 'this.textBox_Telefono.Text', 'this.textBox_CorreoEmisor.Text', 'Convert.ToInt32(this.textBox_Acteco.Text)', 'Convert.ToInt32(this.textBox_CdgSIISucur.Text)', 'this.textBox_DirMatriz.Text', 'this.textBox_CdadOrigen.Text', 'this.textBox_CmnaOrigen.Text', 'this.textBox_DirOrigen.Text', 'this.textBox_ScsalSII.Text', 'this.textBox_NbreCertificado.Text', 'this.textBox_Sucursales.Text', 'this.textBox_FchResol.Text', 'this.textBox_RutCertificado.Text', 'this.textBox_NumResol.Text', 'this.textBox_UrlCore.Text', 'base.ToString()', 'base.ToString()', 'base.ToString()', 'base.ToString()', 'this.textBox_CdadOrigen.Text', 'base.ToString()', 'this.textBox_RUTEmisor.Text'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#button1_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\Formulario" File="FormEmisor.cs" Line="161">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'FormEmisor.button1_Click(object, EventArgs)' podría contener las siguientes variables: 'bcaemp'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Log" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#addLog(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="Log.cs" Line="26">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'Log.addLog(string, string)' podría contener las siguientes variables: 'suceso', 'estado'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ReenvioSql" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#addReenvio(System.String,System.String,System.String,System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="ReenvioSql.cs" Line="25">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'ReenvioSql.addReenvio(string, string, string, string, string, string)' podría contener las siguientes variables: 'jsonName', 'envunit', 'pdft', 'pdfc', 'filecliente', 'filefactura'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#cambioEstadoReenvio(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="ReenvioSql.cs" Line="79">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'ReenvioSql.cambioEstadoReenvio(string, string)' podría contener las siguientes variables: 'estado', 'jsonname'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="TxtReader" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#lectura(System.String,System.Boolean,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="TxtReader.cs" Line="123">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'TxtReader.lectura(string, bool, string)' podría contener las siguientes variables: 'doc.RUTEmisor'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="UltimoDteSql" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#addUltmoDte(IatDteBridge.Documento)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="UltimoDteSql.cs" Line="26">La cadena de consulta pasada a 'SQLiteCommand.SQLiteCommand(string, SQLiteConnection)' en 'UltimoDteSql.addUltmoDte(Documento)' podría contener las siguientes variables: 'doc.RUTEmisor', 'doc.RznSoc', 'doc.CdgSIISucur', 'doc.RUTRecep', 'doc.RznSocRecep', 'doc.Folio', 'doc.TipoDTE'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="xmlAdmin" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#getXmlFolio(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="xmlAdmin.cs" Line="451">El objeto 'sr' admite Dispose más de una vez en el método 'xmlAdmin.getXmlFolio(string, int)'. Para evitar generar una excepción System.ObjectDisposedException, no debe llamar a Dispose más de una vez en un objeto.: Lines: 451</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="xmlPaquete" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#getXmlFolio(System.String,System.Int32,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-04-24 20:27:35Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge" File="xmlPaquete.cs" Line="601">El objeto 'sr' admite Dispose más de una vez en el método 'xmlPaquete.getXmlFolio(string, int, string)'. Para evitar generar una excepción System.ObjectDisposedException, no debe llamar a Dispose más de una vez en un objeto.: Lines: 601</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="IatDteBridge.Properties">
+       <Types>
+        <Type Name="Resources" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="ExcludedInSource" Created="2016-04-24 20:27:35Z" FixCategory="NonBreaking" LastSeen="0001-01-01 00:00:00Z" />
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>Evitar código privado al que no se llama</Name>
+   <Description>Hay código al que no se llama que no es visible externamente y no es un punto de entrada conocido del runtime. Si esta infracción da lugar a un error, envíe un informe sobre el problema al equipo de análisis de código de Visual Studio.</Description>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182264.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>No usar Dispose varias veces en objetos</Name>
+   <Description>Un método Dispose correctamente implementado se puede llamar varias veces sin producir ninguna excepción. Sin embargo, esto no está garantizado y, para evitar generar una excepción System.ObjectDisposedException, no debe llamar al método Dispose más de una vez en un objeto.</Description>
+   <Resolution Name="Default">El objeto {0} admite Dispose más de una vez en el método {1}. Para evitar generar una excepción System.ObjectDisposedException, no debe llamar a Dispose más de una vez en un objeto.: Lines: 601</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Proporcionar argumentos correctos a los métodos de formato" Category="Microsoft.Usage" CheckId="CA2241">
+   <Name>Proporcionar argumentos correctos a los métodos de formato</Name>
+   <Description>Proporcione el número correcto de argumentos a las llamadas a String.Format.</Description>
+   <Resolution Name="MissingFormatItem">El método {0} llama a {1} y no proporciona un elemento de formato para el argumento {2}. La cadena de formato proporcionada es: '{3}'</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182361.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad</Name>
+   <Description>Una cadena de comando SQL compilada a partir de datos proporcionados por el usuario es vulnerable a ataques pon inyección de código SQL. Microsoft SQL Server y otros servidores de bases de datos admiten procedimientos almacenados y consultas SQL parametrizadas, que reducen el riesgo de ataques por inyección.</Description>
+   <Resolution Name="WithNonLiterals">La cadena de consulta pasada a {0} en {1} podría contener las siguientes variables: {2}. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Categoría</String>
+  <String Key="Certainty">Certeza</String>
+  <String Key="CollapseAll">Contraer todo</String>
+  <String Key="CheckId">Comprobar id.</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">errores</String>
+  <String Key="ExpandAll">Expandir todo</String>
+  <String Key="Help">Ayuda</String>
+  <String Key="Line">Línea</String>
+  <String Key="Messages">mensajes</String>
+  <String Key="LocationNotStoredInPdb">[Ubicación no almacenada en Pdb]</String>
+  <String Key="Project">Proyecto</String>
+  <String Key="Resolution">Resolución</String>
+  <String Key="Rule">Regla</String>
+  <String Key="RuleFile">Archivo de regla</String>
+  <String Key="RuleDescription">Descripción de la regla</String>
+  <String Key="Source">Origen</String>
+  <String Key="Status">Estado</String>
+  <String Key="Target">Círculos concéntricos</String>
+  <String Key="Warning">Advertencia</String>
+  <String Key="Warnings">advertencias</String>
+  <String Key="ReportTitle">Informe de análisis del código</String>
+ </Localized>
+</FxCopReport>

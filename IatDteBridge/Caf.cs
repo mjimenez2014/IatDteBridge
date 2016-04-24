@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Xml;
-using System.Data.Odbc;
 using System.Data.SqlClient;
 using System.Data;
 using System.Data.SQLite;
@@ -206,7 +202,7 @@ namespace IatDteBridge
             }
             catch (IOException ie)
             {
-
+                throw new Exception("Error" + ie.Message);
             }
 
 
@@ -235,8 +231,6 @@ namespace IatDteBridge
                 SQLiteCommand command = new SQLiteCommand(sql, sqliteConn);
                 command.ExecuteNonQuery();
                 sqliteConn.Close();
-
-
             }
             catch (SQLiteException ex)
             {
@@ -264,7 +258,7 @@ namespace IatDteBridge
             catch (SQLiteException ex)
             {
                 throw new Exception("Error" + ex.Message);
-                System.Console.WriteLine("Error:"+ ex);
+                Console.WriteLine("Error:"+ ex);
             }
   
             return exist;
