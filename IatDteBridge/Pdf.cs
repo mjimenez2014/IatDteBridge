@@ -1,15 +1,8 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
-using System.Drawing.Printing;
-using System.Diagnostics;
-using System.Windows.Forms;
 using System.Globalization;
 
 namespace IatDteBridge

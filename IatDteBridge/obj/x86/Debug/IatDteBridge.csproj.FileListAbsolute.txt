@@ -45,5 +45,4 @@ C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridg
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Debug\IatDteBridge.FormMain.resources
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Debug\IatDteBridge.Properties.Resources.resources
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Debug\IatDteBridge.csproj.GenerateResource.Cache
-C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\bin\Debug\IatDteBridge.exe.CodeAnalysisLog.xml
-C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\bin\Debug\IatDteBridge.exe.lastcodeanalysissucceeded
+C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Debug\IatDteBridge.csprojResolveAssemblyReference.cache

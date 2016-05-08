@@ -102,6 +102,7 @@
     <Compile Include="LibroVenta.cs" />
     <Compile Include="LocalDataBase.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="PdfDocument.cs" />
     <Compile Include="PdfMasivo.cs" />
     <Compile Include="PrinterDir.cs" />
     <Compile Include="ProcesoContingencia.cs" />

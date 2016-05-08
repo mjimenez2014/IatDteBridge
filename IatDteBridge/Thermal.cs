@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Drawing.Printing;
 using System.Globalization;
 namespace IatDteBridge
@@ -12,17 +7,17 @@ namespace IatDteBridge
     class Thermal
     {
         public Documento doc {set; get;}
-        public String dd { set; get; }
+        public string dd { set; get; }
         public int copias { set; get; }
-        public String tipoCopia { set; get; }
+        public string tipoCopia { set; get; }
 
         public void OpenThermal(object sender, PrintPageEventArgs ev)
         {
 
-            String tipoCopia = String.Empty;
-            String nombreDocumento = String.Empty;
+            string tipoCopia = string.Empty;
+            string nombreDocumento = string.Empty;
             Timbre timbre1 = new Timbre();
-            timbre1.CreaTimbre(this.dd);
+            timbre1.CreaTimbre(dd);
             // Agrego un rectangulo
             Rectangle rectangulo = new Rectangle(10, 1, 260, 100);
             Pen p = new Pen(Color.Black, 5);
@@ -36,7 +31,7 @@ namespace IatDteBridge
             ev.Graphics.DrawRectangle(p, rectangulo);
             Empresa empresa = new Empresa().getEmpresa();
 
-            switch (this.doc.TipoDTE)
+            switch (doc.TipoDTE)
             {
                 case 30: nombreDocumento = "FACTURA";
                     break;
@@ -56,23 +51,23 @@ namespace IatDteBridge
             }
             // Agrega separadores al rut
 
-            String rutemisor = this.doc.RUTEmisor;
+            string rutemisor = doc.RUTEmisor;
             rutemisor = rutemisor.Insert(2, ".");
             rutemisor = rutemisor.Insert(6, ".");
 
             ev.Graphics.DrawString("R.U.T.: " + rutemisor, new Font("Arial", 9, FontStyle.Bold), Brushes.Black, new Rectangle(10, 5, 260, 20), alignCenter);
             ev.Graphics.DrawString(nombreDocumento, new Font("Arial", 9, FontStyle.Bold), Brushes.Black, new Rectangle(10, 30, 260, 50), alignCenter);
-            ev.Graphics.DrawString("Nº "+ this.doc.Folio, new Font("Arial", 9, FontStyle.Bold), Brushes.Black, new Rectangle(10, 60, 260, 100), alignCenter);
-            ev.Graphics.DrawString(this.doc.DirRegionalSII, new Font("Arial", 9, FontStyle.Bold), Brushes.Black, new Rectangle(10, 105, 280, 20), alignCenter);
-            ev.Graphics.DrawString(this.doc.RznSoc, new Font("Arial", 9, FontStyle.Bold), Brushes.Black, new Rectangle(0, 130, 280, 40), alignCenter);
-            ev.Graphics.DrawString(this.doc.GiroEmis, new Font("Arial", 8, FontStyle.Italic), Brushes.Black, new Rectangle(0, 170, 280, 50), alignCenter);
+            ev.Graphics.DrawString("Nº "+ doc.Folio, new Font("Arial", 9, FontStyle.Bold), Brushes.Black, new Rectangle(10, 60, 260, 100), alignCenter);
+            ev.Graphics.DrawString(doc.DirRegionalSII, new Font("Arial", 9, FontStyle.Bold), Brushes.Black, new Rectangle(10, 105, 280, 20), alignCenter);
+            ev.Graphics.DrawString(doc.RznSoc, new Font("Arial", 9, FontStyle.Bold), Brushes.Black, new Rectangle(0, 130, 280, 40), alignCenter);
+            ev.Graphics.DrawString(doc.GiroEmis, new Font("Arial", 8, FontStyle.Italic), Brushes.Black, new Rectangle(0, 170, 280, 50), alignCenter);
             int lineaCabecera = 210;
             // Datos del Emisor
-            ev.Graphics.DrawString("FONOS: " + this.doc.Telefono, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(0, lineaCabecera, 280, 40),alignCenter);
+            ev.Graphics.DrawString("FONOS: " + doc.Telefono, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(0, lineaCabecera, 280, 40),alignCenter);
             lineaCabecera += 15;
             ev.Graphics.DrawString("CASA MATRIZ:", new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(0, lineaCabecera, 280, 15), alignCenter);
             lineaCabecera += 15;
-            ev.Graphics.DrawString(this.doc.DirMatriz, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(0, lineaCabecera, 280, 30),alignCenter);
+            ev.Graphics.DrawString(doc.DirMatriz, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(0, lineaCabecera, 280, 30),alignCenter);
             lineaCabecera += 30; //TODO esta linea cambia segun las sucursales de la empresa
             // Agrego las sucursales
             string sucu = string.Empty;
@@ -85,7 +80,7 @@ namespace IatDteBridge
             ev.Graphics.DrawString("SUCURSALES: \n" + sucu, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(0, lineaCabecera, 280, 65),alignCenter);
             lineaCabecera += 3 + 65;// TODO esta linea cambia segun las sucursales de la empresa
             // convierte fecha
-            DateTime fechaemis = Convert.ToDateTime(this.doc.FchEmis);
+            DateTime fechaemis = Convert.ToDateTime(doc.FchEmis);
             int dia = fechaemis.Day;
             string mesletra = fechaemis.ToString("MMMMM");
             int ano = fechaemis.Year;
@@ -97,18 +92,18 @@ namespace IatDteBridge
             ev.Graphics.DrawRectangle(p2, recReceptor);
             ev.Graphics.DrawString("Fecha: Santiago, " + dia + " de " + mesletra + " de " + ano, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
             lineaCabecera += 13;
-            ev.Graphics.DrawString("Señor(es): " + this.doc.RznSocRecep, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
+            ev.Graphics.DrawString("Señor(es): " + doc.RznSocRecep, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
             lineaCabecera += 13;
             ev.Graphics.DrawString("Dirección: " + doc.DirRecep, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
             lineaCabecera += 13;
             // Agrega separadores al rut
-            String rutrecep = this.doc.RUTRecep;
+            string rutrecep = doc.RUTRecep;
             rutrecep = rutrecep.Insert(2, ".");
             rutrecep = rutrecep.Insert(6, ".");
             ev.Graphics.DrawString("R.U.T.: " + rutrecep, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
             lineaCabecera += 13;
             //controla el largo de Giro 
-            String giroRecep = String.Empty;
+            string giroRecep = string.Empty;
             if (doc.GiroRecep.Length <= 40)
             {
                 giroRecep = doc.GiroRecep;
@@ -155,7 +150,7 @@ namespace IatDteBridge
 
             //--------------------------------------------- DETALLE ------------------------------------------------------------------------------
             //Captura el codigo de referencia
-            String codigoreferencia = String.Empty;
+            string codigoreferencia = string.Empty;
             foreach (var codref in doc.Referencia)
             {
                 codigoreferencia = codref.CodRef.ToString();
@@ -163,7 +158,7 @@ namespace IatDteBridge
 
             int next = lineaCabecera; // 30
             int linea = lineaCabecera+15; //15
-            String nmbitem = String.Empty;
+            string nmbitem = string.Empty;
             foreach (var det in doc.detalle)
             {
                 if (codigoreferencia == "2")
@@ -248,7 +243,7 @@ namespace IatDteBridge
                     }
                     else
                     {
-                        String tipoDocRef = String.Empty;
+                        string tipoDocRef = string.Empty;
 
                         if (b.TpoDocRef == "SET")
                         {
@@ -310,9 +305,9 @@ namespace IatDteBridge
             linea += 15;
             // si los impuestos adicionales vienen
             if (doc.imptoReten != null)
-            { 
+            {
                 // agrega Porcentage Impuesto Adicional
-                String prcimpadic = String.Empty;
+                string prcimpadic = string.Empty;
                 foreach (var prc in doc.imptoReten)
                 {
                     prcimpadic = Convert.ToString(prc.TasaImp);
@@ -338,7 +333,7 @@ namespace IatDteBridge
             ev.Graphics.DrawString("Fecha:", new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(0, linea, 280, 15));
             ev.Graphics.DrawString("Recinto:", new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(120, linea, 280, 15));
             linea += 30;
-            if (this.copias == 2)
+            if (copias == 2)
             {
                 ev.Graphics.DrawLine(p2, 2, linea, 280, linea); // linea de separacion
                 linea += 2;
