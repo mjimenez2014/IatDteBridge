@@ -13,8 +13,8 @@ namespace IatDteBridge
     {
         public void procesoPaquete()
         {
-                
-                String paquete = String.Empty;
+
+            string paquete = string.Empty;
                 
                 // instancia fileadmin, para tener las herramientas para mover archivos
                 fileAdmin fileAdm = new fileAdmin();

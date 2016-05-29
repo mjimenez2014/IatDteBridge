@@ -415,6 +415,7 @@ namespace IatDteBridge
                     else
                     {
                         nmbitem = det.NmbItem.Substring(0, 55);
+                        if (det.DscItem != "") nmbitem = nmbitem + "\n" + det.DscItem;
                     }
 
                     if (codigoreferencia == "2") nmbitem = det.NmbItem;
@@ -1318,6 +1319,7 @@ namespace IatDteBridge
                         else
                         {
                             nmbitem = det.NmbItem.Substring(0, 55);
+                            if (det.DscItem != "") nmbitem = nmbitem + "\n" + det.DscItem;
                         }
                         if (codigoreferencia == "2") nmbitem = det.NmbItem;
 

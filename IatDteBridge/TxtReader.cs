@@ -16,11 +16,11 @@ namespace IatDteBridge
     {
         String strConn = @"Data Source="+Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+":/IatFiles/iatDB.sqlite;Pooling=true;FailIfMissing=false;Version=3";
        
-        public Documento lectura(String fileJson, bool moveFile, String dirOrigen)
+        public Documento lectura(string fileJson, bool moveFile, string dirOrigen)
         {
             Documento doc = new Documento();
             fileAdmin file = new fileAdmin();
-            String fileName = String.Empty;
+            string fileName = String.Empty;
 
             if (dirOrigen == "")
             {
@@ -40,10 +40,12 @@ namespace IatDteBridge
 
             if (fileName != null)
             {
-                StreamReader objReader = new StreamReader(fileName,System.Text.Encoding.Default,true);
+ 
+                StreamReader objReader = new StreamReader(fileName, Encoding.Default,true);
                 objReader.ToString();
-                String data = objReader.ReadToEnd();
-        
+                //Leo el json hasta el final
+                string data = objReader.ReadToEnd();
+
                 DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Documento));
                 
                 MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(data));

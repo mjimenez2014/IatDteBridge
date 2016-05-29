@@ -204,9 +204,8 @@ namespace IatDteBridge
                 if (det.CodImpAdic == "" || det.CodImpAdic == "0")
                     codimpadic = "";
 
-                String nmbItem = det.NmbItem.Replace("&", "&amp;"); 
-
- 
+                String nmbItem = det.NmbItem.Replace("&", "&amp;");
+                nmbItem = nmbItem.ToString().Replace('"', ' ').Trim();
 
                 detalle = "<Detalle>\n" +
                 "<NroLinDet>" + det.NroLinDet + "</NroLinDet>\n" +
@@ -337,22 +336,23 @@ namespace IatDteBridge
         {
 
             // for para crear detalles y agregarlos al documento
-            String ted;
-            String firstNmbItem = String.Empty;
+            string ted;
+            string firstNmbItem = string.Empty;
 
             int i = 0;
 
             foreach (var det in doc.detalle)
             {
 
-                String nmbItem = det.NmbItem.Replace("&", "&amp;");
+                string nmbItem = det.NmbItem.Replace("&", "&amp;");
+                nmbItem = nmbItem.ToString().Replace('"', ' ').Trim();
 
                 if (i == 0) firstNmbItem = nmbItem;
                 i++;
             }
 
-            String rutrecep = doc.RUTRecep.Replace("k", "K");
-            String rznsocrecep = doc.RznSocRecep.Replace("&","&amp;");
+            string rutrecep = doc.RUTRecep.Replace("k", "K");
+            string rznsocrecep = doc.RznSocRecep.Replace("&","&amp;");
             
 
             if (firstNmbItem.Length > 40)
@@ -365,9 +365,9 @@ namespace IatDteBridge
                 rznsocrecep = rznsocrecep.Substring(0, 39);
             }
 
-            String inicioTed = "<TED version=\"1.0\">\r\n";
+            string inicioTed = "<TED version=\"1.0\">\r\n";
             // nodo DD
-            String dd = "<DD>" +
+            string dd = "<DD>" +
                     "<RE>" + doc.RUTEmisor + "</RE>" +
                     "<TD>" + doc.TipoDTE + "</TD>" +
                     "<F>" + doc.Folio + "</F>" +
@@ -384,8 +384,8 @@ namespace IatDteBridge
                 "</DD>";
 
 
-            String firma = "<FRMT algoritmo=\"SHA1withRSA\">" + firmaNodoDD(dd, doc.TipoDTE, doc.RUTEmisor) + "</FRMT>\r\n";
-            String finTed = "</TED>\r\n";
+            string firma = "<FRMT algoritmo=\"SHA1withRSA\">" + firmaNodoDD(dd, doc.TipoDTE, doc.RUTEmisor) + "</FRMT>\r\n";
+            string finTed = "</TED>\r\n";
 
             
             ted =   inicioTed + dd + firma + finTed;
@@ -394,7 +394,7 @@ namespace IatDteBridge
 
         }
 
-        public String creaEnvio(String dte, String rutEmisor, String RutReceptor, List<int> tipos, String RutEnvia, String FchResol, String rutReceptorEnvio, String nroResol )
+        public string creaEnvio(string dte, string rutEmisor, string RutReceptor, List<int> tipos, string RutEnvia, string FchResol, string rutReceptorEnvio, string nroResol )
         {
 
 
@@ -515,7 +515,7 @@ namespace IatDteBridge
         }
 
 
-        public String firmaNodoDD(String DD, int tipoDte, string rut)
+        public string firmaNodoDD(string DD, int tipoDte, string rut)
         {
 
             string pk = getXmlFolio("RSA",tipoDte, rut);
@@ -535,7 +535,7 @@ namespace IatDteBridge
         }
 
 
-        public String getXmlFolio(String nodo, int tipo, string rut)
+        public string getXmlFolio(string nodo, int tipo, string rut)
         {
 
             string nodoValue = string.Empty;

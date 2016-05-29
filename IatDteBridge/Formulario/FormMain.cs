@@ -49,10 +49,10 @@ namespace IatDteBridge
             if ((Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "guiaPdf", null) == null)) Registry.SetValue(@"HKEY_CURRENT_USER\Iat", "guiaPdf", "False");
 
             //Creadirectorios
-            Directory.CreateDirectory(@""+Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles");
-            Directory.CreateDirectory(@""+Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles/cafs");
-            Directory.CreateDirectory(@""+Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles/config");
-            Directory.CreateDirectory(@""+Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles/file");
+            Directory.CreateDirectory(@""+ Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles");
+            Directory.CreateDirectory(@""+ Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles/cafs");
+            Directory.CreateDirectory(@""+ Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles/config");
+            Directory.CreateDirectory(@""+ Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles/file");
             Directory.CreateDirectory(@""+Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles/file/libroCompra");
             Directory.CreateDirectory(@""+Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles/file/libroVenta");
             Directory.CreateDirectory(@""+Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles/file/libroGuia");
@@ -296,9 +296,24 @@ namespace IatDteBridge
             this.Show();
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
 
-      
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

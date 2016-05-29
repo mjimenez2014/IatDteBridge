@@ -113,11 +113,11 @@ namespace IatDteBridge
         public string PrnTwoCopy { get; set; }
         [DataMember]
         public string NroOrdenCompra { get; set; }
-        [DataMember]
+   
         public string NroCita { get; set; }// Solo dila
-        [DataMember]
+
         public string Sello { get; set; }// solo dila
-        [DataMember]
+
         public string formaPago { get; set; }
 
         //este atributo es una ista la cual carga las sucursales de la empresa certificada
