@@ -21,7 +21,8 @@ namespace IatDteBridge
                 thermal.dd = TimbreElec;
                 thermal.copias = copies;
                 if (docLectura.PrnTwoCopy == "True")
-                    copies = 1; 
+                    copies = 1;
+                docLectura.PrnTwoCopy = "False";
                 if (copies == 2)
                 {
                     if (docLectura.TipoDTE == 33 || docLectura.TipoDTE == 34)

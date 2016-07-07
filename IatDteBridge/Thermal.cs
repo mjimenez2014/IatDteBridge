@@ -94,6 +94,7 @@ namespace IatDteBridge
             lineaCabecera += 13;
             ev.Graphics.DrawString("Señor(es): " + doc.RznSocRecep, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
             lineaCabecera += 13;
+            if (doc.RznSocRecep.Length >= 25) lineaCabecera += 13;
             ev.Graphics.DrawString("Dirección: " + doc.DirRecep, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
             lineaCabecera += 13;
             // Agrega separadores al rut
@@ -130,7 +131,7 @@ namespace IatDteBridge
                     lineaCabecera += 13;
                     ev.Graphics.DrawString("Bodega Origen: " + doc.BodEmis, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
                     lineaCabecera += 13;
-                    ev.Graphics.DrawString("Bodega Destino: " + doc.BodRecep + " - " + doc.NomVendedor, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
+                    ev.Graphics.DrawString("Bodega Destino: " + doc.BodRecep , new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(5, lineaCabecera, 300, 60));
                 }
             }
             lineaCabecera += 5 + 39;
@@ -187,9 +188,37 @@ namespace IatDteBridge
                     {
                         nmbitem = det.NmbItem;
                     }
+                    // Nombre de Item
                     ev.Graphics.DrawString(Convert.ToString(nmbitem), new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Rectangle(70, next, 280, 15));
+                    // Descripcion del Item
+                    if (det.DscItem != null)
+                    {
+                        ev.Graphics.DrawString(Convert.ToString(det.DscItem), new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Rectangle(10, linea, 280, 240));
+                        linea += 15;
+                        //Calcula el largo de la descripción
+                        if (det.DscItem.Length >= 54) linea += 15;
+                        if (det.DscItem.Length >= 108) linea += 15;
+                        if (det.DscItem.Length >= 162) linea += 15;
+                        if (det.DscItem.Length >= 216) linea += 15;
+                        if (det.DscItem.Length >= 270) linea += 15;
+                        if (det.DscItem.Length >= 324) linea += 15;
+                        if (det.DscItem.Length >= 378) linea += 15;
+                        if (det.DscItem.Length >= 432) linea += 15;
+                        if (det.DscItem.Length >= 486) linea += 15;
+                        if (det.DscItem.Length >= 540) linea += 15;
+                        if (det.DscItem.Length >= 594) linea += 15;
+                        if (det.DscItem.Length >= 648) linea += 15;
+                        if (det.DscItem.Length >= 702) linea += 15;
+                        if (det.DscItem.Length >= 756) linea += 15;
+                        if (det.DscItem.Length >= 810) linea += 15;
+                        if (det.DscItem.Length >= 864) linea += 15;
+                        if (det.DscItem.Length >= 918) linea += 15;
+                        if (det.DscItem.Length >= 972) linea += 15;
+
+                    }
                     //Cantidad de producto mas unidad de medida
                     ev.Graphics.DrawString(Convert.ToString(det.QtyItem) + " " + Convert.ToString(det.UnmdItem), new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Rectangle(10, linea, 70, 15));
+   
                     //Precio Item
                     if (doc.PrnMtoNeto == "True")
                     {

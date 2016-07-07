@@ -63,7 +63,7 @@ namespace IatDteBridge
         [DataMember]
 		public int TotIVAFueraPlazo {get;set;}
         [DataMember]
-		public int TotMntTotal {get;set;}
+		public Int64 TotMntTotal {get;set;}
 
         // Lista TotIVANoRec
         [DataMember]
@@ -137,7 +137,7 @@ namespace IatDteBridge
         [DataMember]
         public int CodImp {get;set;}
         [DataMember]
-		public int TasaImp {get;set;}
+		public decimal TasaImp {get;set;}
         [DataMember]
 		public int MntImp {get;set;}
         

@@ -34,7 +34,7 @@ namespace IatDteBridge
                 + "<TipoOperacion>"+libro.TipoOperacion+"</TipoOperacion>\n"
                 + "<TipoLibro>"+libro.TipoLibro+"</TipoLibro>\n"
                 + "<TipoEnvio>" + libro.TipoEnvio + "</TipoEnvio>\n"
-                + folioNotificacion
+                + folioNotificacion 
                 + "</Caratula>\n";
 
 
@@ -62,6 +62,7 @@ namespace IatDteBridge
 
                 String b=String.Empty;
                 String c=String.Empty;
+                string totOtrosImp = string.Empty;
                 String d=String.Empty;
                 String a = "<TotalesPeriodo>\n" +
                   "<TpoDoc>" + total.TpoDoc + "</TpoDoc>\n" +
@@ -87,25 +88,28 @@ namespace IatDteBridge
                       "<TotOpIVANoRec>" + ivano.TotOpIVANoRec + "</TotOpIVANoRec>\n" +
                       "<TotMntIVANoRec>" + ivano.TotMntIVANoRec + "</TotMntIVANoRec>\n" +
                       "</TotIVANoRec>\n";
+                       
                   }
               }
 
-              if (total.TotOtrosImp == null)
-              {
-                  c = "";
-              }
-              else
-              {
-                  foreach (var otrosimp in total.TotOtrosImp)
-                  {
-                      c = "<TotOtrosImp>\n" +
-                        "<CodImp>" + otrosimp.CodImp + "</CodImp>\n" +
-                        "<TotMntImp>" + otrosimp.TotMntImp + "</TotMntImp>\n" +
-                      "</TotOtrosImp>\n";
-                  }
+                if (total.TotOtrosImp.Count == 0 )
+                {
+                    c = "";
+                }
+                else
+                {
+                    foreach (var otrosimp in total.TotOtrosImp)
+                    {
+                        c = "<TotOtrosImp>\n" +
+                          "<CodImp>" + otrosimp.CodImp + "</CodImp>\n" +
+                          "<TotMntImp>" + otrosimp.TotMntImp + "</TotMntImp>\n" +
+                        "</TotOtrosImp>\n";
+                        totOtrosImp += c;
+                    }
+
               }
 
-                TotalesP += a+b+c+d+
+                TotalesP += a+b+totOtrosImp+d+
             //    "<TotIVAFueraPlazo>" + total.TotIVAFueraPlazo + "</TotIVAFueraPlazo>\n" +
                 "<TotMntTotal>"+total.TotMntTotal+"</TotMntTotal>\n" +
               "</TotalesPeriodo>\n";
@@ -157,7 +161,7 @@ namespace IatDteBridge
                  if (det.IVAUsoComun == 0)
                      ivausocomun = "";
 
-                 if (det.OtrosImp == null)
+                 if (det.OtrosImp.Count == 0)
                  {
                      detOtrosImp = "";
                  }

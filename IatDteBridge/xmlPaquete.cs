@@ -16,16 +16,24 @@ namespace IatDteBridge
         public String doc_to_xmlSii(Documento doc,String TED, String fch)
         {
 
-            String dte = "<DTE version=\"1.0\">\n" +
+            string dte = "<DTE version=\"1.0\">\n" +
                          "<Documento ID=\"F" + doc.Folio + "T" + doc.TipoDTE + "\">\n";
 
-            String tipodespacho = "<TipoDespacho>" + doc.TipoDespacho + "</TipoDespacho>\n";
+            string tipodespacho = "<TipoDespacho>" + doc.TipoDespacho + "</TipoDespacho>\n";
             if (doc.TipoDespacho == 0)
                 tipodespacho = "";
 
-            String indtraslado = "<IndTraslado>" + doc.IndTraslado + "</IndTraslado>\n";
+            string indtraslado = "<IndTraslado>" + doc.IndTraslado + "</IndTraslado>\n";
             if (doc.IndTraslado == 0)
                 indtraslado = "";
+
+            string fmapago = "<FmaPago>" + doc.FmaPago + "</FmaPago>\n";
+            if (doc.FmaPago == 0)
+                fmapago = "";
+
+            string mediopago = "<MedioPago>" + doc.MedioPago + "</MedioPago>\n";
+            if (doc.MedioPago == "")
+                mediopago = "";
 
             String encabezado = "<Encabezado>\n" +
                 "<IdDoc> \n" +
@@ -34,8 +42,9 @@ namespace IatDteBridge
                     "<FchEmis>" + doc.FchEmis + "</FchEmis>\n" +
                     tipodespacho +
                     indtraslado +
+                    fmapago +
+                    mediopago +
                 "</IdDoc>\n";
-
 
             String emisor = "<Emisor>\n" +
                     "<RUTEmisor>" + doc.RUTEmisor + "</RUTEmisor>\n" +

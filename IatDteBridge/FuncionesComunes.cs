@@ -294,6 +294,37 @@ namespace IatDteBridge
             return estado;
 
         }
+
+        public string getMedioPago(string medioPago)
+        {
+            string mediopago = string.Empty;
+            switch (medioPago)
+            {
+                case "CH":
+                    mediopago = "Cheque";
+                    break;
+                case "CF":
+                    mediopago = "Cheque a fecha";
+                    break;
+                case "LT":
+                    mediopago = "Letra";
+                    break;
+                case "EF":
+                    mediopago = "Efectivo";
+                    break;
+                case "PE":
+                    mediopago = "Pago A Cta. Cte.";
+                    break;
+                case "TC":
+                    mediopago = "Tarjeta Crédito/Debito";
+                    break;
+                case "OT":
+                    mediopago = "Otro";
+                    break;
+            }
+
+            return mediopago;
+        }
     }
 
 }

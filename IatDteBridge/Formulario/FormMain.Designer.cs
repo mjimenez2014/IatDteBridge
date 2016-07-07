@@ -83,6 +83,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(174, 20);
             this.textBox2.TabIndex = 4;
+            this.textBox2.Visible = false;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
@@ -167,6 +168,7 @@
             this.button9.TabIndex = 20;
             this.button9.Text = "PDF Denuevo";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Visible = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // textBox1
@@ -175,6 +177,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(174, 20);
             this.textBox1.TabIndex = 21;
+            this.textBox1.Visible = false;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
@@ -185,6 +188,7 @@
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 22;
             this.label1.Text = "Json";
+            this.label1.Visible = false;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
@@ -195,6 +199,7 @@
             this.label3.Size = new System.Drawing.Size(24, 13);
             this.label3.TabIndex = 23;
             this.label3.Text = "Xml";
+            this.label3.Visible = false;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button10
@@ -205,6 +210,7 @@
             this.button10.TabIndex = 24;
             this.button10.Text = "json";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Visible = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
@@ -215,6 +221,7 @@
             this.button11.TabIndex = 25;
             this.button11.Text = "xml";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Visible = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // openFileDialog1
@@ -313,11 +320,11 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(778, 34);
+            this.label5.Location = new System.Drawing.Point(769, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(161, 13);
+            this.label5.Size = new System.Drawing.Size(165, 13);
             this.label5.TabIndex = 35;
-            this.label5.Text = "VERSIÓN: 20160523_2030";
+            this.label5.Text = "VERSIÓN: 20160704_23:00";
             // 
             // button17
             // 

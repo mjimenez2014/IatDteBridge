@@ -21,7 +21,7 @@ namespace IatDteBridge
 
                     string sql1 = "CREATE TABLE IF NOT EXISTS log (fch VARCHAR(20), suceso VARCHAR(255), estado VARCHAR(20)) ";
                     string sql2 = "CREATE TABLE IF NOT EXISTS reenvio (fch VARCHAR(20), jsonname VARCHAR(255), envunit VARCHAR(255), pdft VARCHAR(255), pdfc VARCHAR(255), estado VARCHAR(20)) ";
-                    string sql3 = "CREATE TABLE IF NOT EXISTS empresa (RutEmisor VARCHAR(10), RznSoc VARCHAR(255), GiroEmis VARCHAR(255),Telefono VARCHAR(255), CorreoEmisor VARCHAR(255), Acteco VARCHAR(50), CdgSIISucur VARCHAR(50), DirMatriz VARCHAR(255), CiudadOrigen VARCHAR(255), CmnaOrigen VARCHAR(255), DirOrigen VARCHAR(255), SucurSII VARCHAR(100), NomCertificado VARCHAR(255), SucurEmisor VARCHAR(255), FchResol VARCHAR(50), RutCertificado VARCHAR(10), NumResol VARCHAR(20), CondEntrega VARCHAR(10),PrnMtoNeto VARCHAR(5),PrnTwoCopy VARCHAR(5),PrnThermal VARCHAR(5),UrlCore VARCHAR(255), PrnOC VARCHAR(5), VistaPrevia VARCHAR(5), DirLocal VARCHAR(5))";
+                    string sql3 = "CREATE TABLE IF NOT EXISTS empresa (RutEmisor VARCHAR(10), RznSoc VARCHAR(255), GiroEmis VARCHAR(255),Telefono VARCHAR(255), CorreoEmisor VARCHAR(255), Acteco VARCHAR(50), CdgSIISucur VARCHAR(50), DirMatriz VARCHAR(255), CiudadOrigen VARCHAR(255), CmnaOrigen VARCHAR(255), DirOrigen VARCHAR(255), SucurSII VARCHAR(100), NomCertificado VARCHAR(255), SucurEmisor VARCHAR(255), FchResol VARCHAR(50), RutCertificado VARCHAR(10), NumResol VARCHAR(20), CondEntrega VARCHAR(10),PrnMtoNeto VARCHAR(5),PrnTwoCopy VARCHAR(5),PrnThermal VARCHAR(5),UrlCore VARCHAR(255), PrnOC VARCHAR(5), VistaPrevia VARCHAR(5), DirLocal VARCHAR(255))";
 
                     //carga bd inicial
                     string sql4 = "insert into empresa " + 

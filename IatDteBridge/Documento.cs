@@ -111,7 +111,7 @@ namespace IatDteBridge
         public string PrnMtoNeto { get; set; }
 
         public string PrnTwoCopy { get; set; }
-        [DataMember]
+        //[DataMember]
         public string NroOrdenCompra { get; set; }
    
         public string NroCita { get; set; }// Solo dila
@@ -119,6 +119,10 @@ namespace IatDteBridge
         public string Sello { get; set; }// solo dila
 
         public string formaPago { get; set; }
+        [DataMember]
+        public string CondVenta { get; set; } //
+        [DataMember]
+        public string MedioPago { get; set; }
 
         //este atributo es una ista la cual carga las sucursales de la empresa certificada
         // debe ser llenado al momento de cargar la clase, ya que no es un atributo serializable

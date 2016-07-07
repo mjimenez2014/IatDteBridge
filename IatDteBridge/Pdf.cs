@@ -9,7 +9,7 @@ namespace IatDteBridge
 {
     class Pdf
     {
-
+        FuncionesComunes funcionesComunes = new FuncionesComunes();
         private string sucursalesEmisor = "";
         String[] headerDetalle = { "Item", "Codigo", "Descripción", "Cantidad", "Unidad", "P Unit.", "Dscto.", "Valor" };
         private String[] datosDetalle = new String[300];
@@ -21,6 +21,8 @@ namespace IatDteBridge
         // iTextSharp.text.Font fuenteNegrita = new Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font., BaseColor.RED);
         // Configuración de mostrar la columna plu o codigo en PDF
         string plu = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "pluPdf", null).ToString();
+        string DescuentoPct = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "DescuentoPct", null).ToString();
+
         //Configuración de  decimales en montos netos
         string cantDecimales = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "cantDecimales", null).ToString();
 
@@ -121,7 +123,6 @@ namespace IatDteBridge
                 Console.WriteLine(s);
                 sucu += s + "\n";
             }
-
             PdfPCell celdaDatosEmisor = new PdfPCell(new Paragraph(doc.RznSoc + "\n" + doc.GiroEmis + "\n" + "FONOS: " + doc.Telefono + "\n" + "CASA MATRIZ: " + doc.DirMatriz + 
                 "\n" + "SUCURSALES: \n" + sucu, fuenteNegra));
             celdaDatosEmisor.BorderWidth = 0;
@@ -312,12 +313,12 @@ namespace IatDteBridge
                 }
                 else
                 {
-                    PdfPCell celdaEtiquetaVacia = new PdfPCell(new Paragraph(" ", fuenteNegra));
+                    PdfPCell celdaEtiquetaVacia = new PdfPCell(new Paragraph("Cond. Venta: ", fuenteNegra));
                     celdaEtiquetaVacia.HorizontalAlignment = 0;
                     celdaEtiquetaVacia.BorderWidth = 0;
                     datosReceptor.AddCell(celdaEtiquetaVacia);
 
-                    PdfPCell celdaVacia2 = new PdfPCell(new Paragraph(" ", fuenteNegra));
+                    PdfPCell celdaVacia2 = new PdfPCell(new Paragraph(doc.CondVenta , fuenteNegra));
                     celdaVacia2.HorizontalAlignment = 0;
                     celdaVacia2.BorderWidth = 0;
                     datosReceptor.AddCell(celdaVacia2);
@@ -377,6 +378,7 @@ namespace IatDteBridge
                 
                 if (codigoreferencia == "2" && det.NmbItem.Length > 41)
                 {
+
                     if (det.DscItem != "") det.NmbItem = det.NmbItem + "\n\r"+det.DscItem;
                     datosDetalle[puntero] = " ";
                     puntero = puntero + 1;
@@ -445,7 +447,15 @@ namespace IatDteBridge
                     }
                     else
                     {
-                        datosDetalle[puntero] = det.DescuentoBruMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+                        if (DescuentoPct == "False")
+                        {
+
+                            datosDetalle[puntero] = det.DescuentoBruMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+                        }
+                        else
+                        {
+                            datosDetalle[puntero] = det.DescuentoPct.ToString("N2", CultureInfo.CreateSpecificCulture("es-ES")) + "%";
+                        }
                     }
                     puntero = puntero + 1;
 
@@ -1215,12 +1225,12 @@ namespace IatDteBridge
                     }
                     else
                     {
-                        PdfPCell celdaEtiquetaVacia = new PdfPCell(new Paragraph(" ", fuenteNegra));
+                        PdfPCell celdaEtiquetaVacia = new PdfPCell(new Paragraph("Cond. Venta", fuenteNegra));
                         celdaEtiquetaVacia.HorizontalAlignment = 0;
                         celdaEtiquetaVacia.BorderWidth = 0;
                         datosReceptor.AddCell(celdaEtiquetaVacia);
 
-                        PdfPCell celdaVacia2 = new PdfPCell(new Paragraph(" ", fuenteNegra));
+                        PdfPCell celdaVacia2 = new PdfPCell(new Paragraph(doc.CondVenta, fuenteNegra));
                         celdaVacia2.HorizontalAlignment = 0;
                         celdaVacia2.BorderWidth = 0;
                         datosReceptor.AddCell(celdaVacia2);
@@ -1348,7 +1358,15 @@ namespace IatDteBridge
                         }
                         else
                         {
-                            datosDetalle[puntero] = det.DescuentoBruMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+                            if (DescuentoPct == "False")
+                            {
+
+                                datosDetalle[puntero] = det.DescuentoBruMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+                            }
+                            else
+                            {
+                                datosDetalle[puntero] = det.DescuentoPct.ToString("N2", CultureInfo.CreateSpecificCulture("es-ES")) + "%";
+                            }
                         }
                             puntero = puntero + 1;
                         

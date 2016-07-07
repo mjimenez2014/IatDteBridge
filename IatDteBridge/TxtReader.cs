@@ -7,8 +7,7 @@ using System.Collections;
 using System.Runtime.Serialization.Json;
 using System.Windows.Forms;
 using System.Data.SQLite;
-
-
+using System.Globalization;
 
 namespace IatDteBridge
 {
@@ -177,6 +176,13 @@ namespace IatDteBridge
                 else
                 {
                     doc.fileName = fileJson;
+                }
+
+                foreach(var dsc in doc.dscRcgGlobal)
+                {
+                    string valor = dsc.ValorDR.ToString("N2", CultureInfo.CreateSpecificCulture("es-ES"));
+                    valor = valor.Replace(",", ".");
+                    dsc.ValorDR = Convert.ToDecimal(valor);
                 }
                 return doc;
             }
