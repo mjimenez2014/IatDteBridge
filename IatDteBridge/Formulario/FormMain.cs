@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.Win32;
+using System.Drawing.Printing;
 
 namespace IatDteBridge
 {
@@ -43,11 +44,22 @@ namespace IatDteBridge
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            String pkInstalledPrinters;
+            for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+            {
+                pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
+                Console.WriteLine(pkInstalledPrinters);
+            }
+
+
+
             if ((Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat",null) == null))Registry.SetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", "C");
             if ((Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "pluPdf", null) == null)) Registry.SetValue(@"HKEY_CURRENT_USER\Iat", "pluPdf", "True");
             if ((Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "cantDecimales", null) == null)) Registry.SetValue(@"HKEY_CURRENT_USER\Iat", "cantDecimales", "4");
             if ((Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "guiaPdf", null) == null)) Registry.SetValue(@"HKEY_CURRENT_USER\Iat", "guiaPdf", "False");
             if ((Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "DescuentoPct", null) == null)) Registry.SetValue(@"HKEY_CURRENT_USER\Iat", "DescuentoPct", "False");
+            if ((Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadMedida", null) == null)) Registry.SetValue(@"HKEY_CURRENT_USER\Iat", "unidadMedida", "True");
+
 
             //Creadirectorios
             Directory.CreateDirectory(@""+ Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadIat", null).ToString()+"://IatFiles");

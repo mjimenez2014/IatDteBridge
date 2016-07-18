@@ -124,6 +124,8 @@ namespace IatDteBridge
         [DataMember]
         public string MedioPago { get; set; }
 
+        
+
         //este atributo es una ista la cual carga las sucursales de la empresa certificada
         // debe ser llenado al momento de cargar la clase, ya que no es un atributo serializable
         public List<Sucursal> sucursalesempresa = new List<Sucursal>(8);
@@ -298,6 +300,8 @@ namespace IatDteBridge
         public string TpoCodigo { get; set; } //Tipo de codificación utilizada para el ítem Standard: EAN, PLU, DUN o Interna (Hasta 5 tipos de códigos).... este puede ser una clase...
         [DataMember]       
         public string VlrCodigo { get; set; } // Código del producto de acuerdo a tipo de codificación indicada en campo anterior (Hasta 5 códigos)
+        [DataMember]
+        public string CodCatalog { get; set; }
         [DataMember] 
         public string TpoDocLiq { get; set; } // Para liquidaciones se debe registrar el código del docto. que se liquida. (Ej: :30, 33, 35, 39, 56,etc.) 
         [DataMember]

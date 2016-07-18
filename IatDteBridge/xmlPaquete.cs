@@ -32,7 +32,7 @@ namespace IatDteBridge
                 fmapago = "";
 
             string mediopago = "<MedioPago>" + doc.MedioPago + "</MedioPago>\n";
-            if (doc.MedioPago == "")
+            if (doc.MedioPago == "" || doc.MedioPago == null)
                 mediopago = "";
 
             String encabezado = "<Encabezado>\n" +

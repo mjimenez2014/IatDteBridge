@@ -45,4 +45,3 @@ C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridg
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Release\IatDteBridge.csproj.GenerateResource.Cache
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Release\IatDteBridge.exe
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Release\IatDteBridge.pdb
-C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Release\IatDteBridge.csprojResolveAssemblyReference.cache

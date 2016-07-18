@@ -11,9 +11,8 @@ namespace IatDteBridge
     {
         FuncionesComunes funcionesComunes = new FuncionesComunes();
         private string sucursalesEmisor = "";
-        String[] headerDetalle = { "Item", "Codigo", "Descripción", "Cantidad", "Unidad", "P Unit.", "Dscto.", "Valor" };
-        private String[] datosDetalle = new String[300];
-        private String[] datosHeaderReferencia = { "Tipo de Documento", "Folio", "Fecha", "Razón Referencia" };
+        private string[] datosDetalle = new String[300];
+        private string[] datosHeaderReferencia = { "Tipo de Documento", "Folio", "Fecha", "Razón Referencia" };
         iTextSharp.text.Font fuenteNegra = new Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL);
         iTextSharp.text.Font fuenteBold = new Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.BOLD);
         iTextSharp.text.Font fuenteBold7 = new Font(iTextSharp.text.Font.FontFamily.HELVETICA, 7, iTextSharp.text.Font.BOLD);
@@ -21,13 +20,16 @@ namespace IatDteBridge
         // iTextSharp.text.Font fuenteNegrita = new Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font., BaseColor.RED);
         // Configuración de mostrar la columna plu o codigo en PDF
         string plu = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "pluPdf", null).ToString();
+        //configura si se imprime el valor o el porcentaje del descuento
         string DescuentoPct = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "DescuentoPct", null).ToString();
-
         //Configuración de  decimales en montos netos
         string cantDecimales = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "cantDecimales", null).ToString();
+        //configura si se imprime unidad de medida
+        string unidadMedida = Microsoft.Win32.Registry.GetValue(@"HKEY_CURRENT_USER\Iat", "unidadMedida", null).ToString();
 
+         string[] headerDetalle = { "Item", "Codigo", "Descripción", "Cantidad", "Unidad", "P Unit.", "Dscto.", "Valor" };
 
-        public Document OpenPdf(String dd, Documento doc, String fileName, String tipoCopia)//OpenPdf(Documento doc, String dd)
+        public Document OpenPdf(string dd, Documento doc, string fileName, string tipoCopia)//OpenPdf(Documento doc, String dd)
         {
 
             String nombreDocumento = String.Empty;
@@ -131,7 +133,7 @@ namespace IatDteBridge
             // Agrega separadores al rut
 
             String rutemisor = doc.RUTEmisor;
-            rutemisor = rutemisor.Insert(2, ".");
+            rutemisor = rutemisor.Insert(2, "."); ;
             rutemisor = rutemisor.Insert(6, ".");
 
             PdfPCell celdaFolio = new PdfPCell(new Paragraph("R.U.T " + rutemisor + " \n\n"+ nombreDocumento +" \n\nNº " + doc.Folio + "\n\n", fuenteRoja));
@@ -325,6 +327,29 @@ namespace IatDteBridge
                 }
             }
 
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Quinta fila +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            PdfPCell celdaEtiquetaTipoPago = new PdfPCell(new Paragraph("Tipo Pago: ", fuenteNegra));
+            celdaEtiquetaTipoPago.HorizontalAlignment = 0;
+            celdaEtiquetaTipoPago.BorderWidth = 0;
+            datosReceptor.AddCell(celdaEtiquetaTipoPago);
+
+            PdfPCell celdaTipoPago = new PdfPCell(new Paragraph(funcionesComunes.getMedioPago(doc.MedioPago), fuenteNegra));
+            celdaTipoPago.HorizontalAlignment = 0;
+            celdaTipoPago.BorderWidth = 0;
+            datosReceptor.AddCell(celdaTipoPago);
+
+            PdfPCell celdaEtiquetaDisponible = new PdfPCell(new Paragraph(" ", fuenteNegra));
+            celdaEtiquetaDisponible.HorizontalAlignment = 0;
+            celdaEtiquetaDisponible.BorderWidth = 0;
+            datosReceptor.AddCell(celdaEtiquetaDisponible);
+
+            PdfPCell celdaDisponible = new PdfPCell(new Paragraph(" ", fuenteNegra));
+            celdaDisponible.HorizontalAlignment = 0;
+            celdaDisponible.BorderWidth = 0;
+            datosReceptor.AddCell(celdaDisponible);
+
             PdfPTable contenedorDatosReceptor = new PdfPTable(1);
             contenedorDatosReceptor.WidthPercentage = 100;
             PdfPCell celdaContDatRecep = new PdfPCell(datosReceptor);
@@ -340,8 +365,16 @@ namespace IatDteBridge
             }
             else
             {
+                if (unidadMedida == "True")
+                {
 
-                detalle.SetWidths(new float[] { 15f, 30f, 200f, 30f, 25f, 50f, 30f, 50f });
+                    detalle.SetWidths(new float[] { 15f, 30f, 200f, 30f, 25f, 50f, 30f, 50f });
+                }
+                else
+                {
+                    headerDetalle = new string[] { "Item", "Codigo","Catalogo", "Descripción", "Cantidad", "P Unit.", "Dscto.", "Valor" };
+                    detalle.SetWidths(new float[] { 15f, 30f, 30f, 200f, 30f, 50f, 30f, 50f });
+                }
             }
             detalle.WidthPercentage = 100;
 
@@ -407,6 +440,13 @@ namespace IatDteBridge
                         puntero = puntero + 1;
                         datosDetalle[puntero] = Convert.ToString(det.VlrCodigo);
                     }
+
+                    if(unidadMedida == "False")
+                    {
+                        puntero = puntero + 1;
+                        datosDetalle[puntero] = det.CodCatalog;
+
+                    }
                     //controla el largo de nombre item
                     if (det.NmbItem.Length <= 55)
                     {
@@ -428,8 +468,11 @@ namespace IatDteBridge
                     datosDetalle[puntero] = Convert.ToString(det.QtyItem);
                     if (plu != "False")
                     {
-                        puntero = puntero + 1;
-                        datosDetalle[puntero] = Convert.ToString(det.UnmdItem);
+                        if (unidadMedida == "True")
+                        {
+                            puntero = puntero + 1;
+                            datosDetalle[puntero] = Convert.ToString(det.UnmdItem);
+                        }
                     }
                     puntero = puntero + 1;
                     if (doc.PrnMtoNeto == "True")
@@ -443,7 +486,14 @@ namespace IatDteBridge
                     puntero = puntero + 1;
                     if (doc.PrnMtoNeto == "True")
                     {
-                        datosDetalle[puntero] = det.DescuentoMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+                        if (DescuentoPct == "False")
+                        {
+                            datosDetalle[puntero] = det.DescuentoMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+                        }
+                        else
+                        {
+                            datosDetalle[puntero] = det.DescuentoPct.ToString("N2", CultureInfo.CreateSpecificCulture("es-ES")) + "%";
+                        }
                     }
                     else
                     {
@@ -477,8 +527,9 @@ namespace IatDteBridge
             int celdaIterador = 0;
             int celdaDescr = 2;
             if (plu == "False") celdaDescr = 1;
-
-            foreach (String a in datosDetalle)
+            if (unidadMedida == "False") celdaDescr = 3;
+            
+            foreach (string a in datosDetalle) // dibuja la tabla detalle en el pdf
             {
                 PdfPCell celda = new PdfPCell(new Paragraph(a, fuenteNegra));
                 if (celdaIterador == celdaDescr)
@@ -491,7 +542,7 @@ namespace IatDteBridge
                     else
                     {
                         celda.HorizontalAlignment = Element.ALIGN_LEFT;
-                        celdaDescr += 8; // proxima celda de nombre producto
+                        celdaDescr += 8; // proxima celda de nombre producto                        
                     }
                 }
                 else
@@ -1225,7 +1276,7 @@ namespace IatDteBridge
                     }
                     else
                     {
-                        PdfPCell celdaEtiquetaVacia = new PdfPCell(new Paragraph("Cond. Venta", fuenteNegra));
+                        PdfPCell celdaEtiquetaVacia = new PdfPCell(new Paragraph("Cond. Venta: ", fuenteNegra));
                         celdaEtiquetaVacia.HorizontalAlignment = 0;
                         celdaEtiquetaVacia.BorderWidth = 0;
                         datosReceptor.AddCell(celdaEtiquetaVacia);
@@ -1237,14 +1288,35 @@ namespace IatDteBridge
                     }
                 }
 
+
+                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Quinta fila +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                PdfPCell celdaEtiquetaTipoPago = new PdfPCell(new Paragraph("Medio Pago: ", fuenteNegra));
+                celdaEtiquetaTipoPago.HorizontalAlignment = 0;
+                celdaEtiquetaTipoPago.BorderWidth = 0;
+                datosReceptor.AddCell(celdaEtiquetaTipoPago);
+
+                PdfPCell celdaTipoPago = new PdfPCell(new Paragraph( funcionesComunes.getMedioPago(doc.MedioPago), fuenteNegra));
+                celdaTipoPago.HorizontalAlignment = 0;
+                celdaTipoPago.BorderWidth = 0;
+                datosReceptor.AddCell(celdaTipoPago);
+
+                PdfPCell celdaEtiquetaDisponible = new PdfPCell(new Paragraph(" ", fuenteNegra));
+                celdaEtiquetaDisponible.HorizontalAlignment = 0;
+                celdaEtiquetaDisponible.BorderWidth = 0;
+                datosReceptor.AddCell(celdaEtiquetaDisponible);
+
+                PdfPCell celdaDisponible = new PdfPCell(new Paragraph(" ", fuenteNegra));
+                celdaDisponible.HorizontalAlignment = 0;
+                celdaDisponible.BorderWidth = 0;
+                datosReceptor.AddCell(celdaDisponible);
+
                 PdfPTable contenedorDatosReceptor = new PdfPTable(1);
                 contenedorDatosReceptor.WidthPercentage = 100;
                 PdfPCell celdaContDatRecep = new PdfPCell(datosReceptor);
                 contenedorDatosReceptor.AddCell(celdaContDatRecep);
-
-
                 //+++++++++++++++++++++++++++++++++++++++++++++++++++++ Detalle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                
+
 
                 PdfPTable detalle = new PdfPTable(8);
                 if (plu == "False")
@@ -1255,7 +1327,16 @@ namespace IatDteBridge
                 else
                 {
 
-                    detalle.SetWidths(new float[] { 15f, 30f, 200f, 30f, 25f, 50f, 30f, 50f });
+                    if (unidadMedida == "True")
+                    {
+
+                        detalle.SetWidths(new float[] { 15f, 30f, 200f, 30f, 25f, 50f, 30f, 50f });
+                    }
+                    else
+                    {
+                        headerDetalle = new string[] { "Item", "Codigo", "Catalogo", "Descripción", "Cantidad", "P Unit.", "Dscto.", "Valor" };
+                        detalle.SetWidths(new float[] { 15f, 30f, 30f, 200f, 30f, 50f, 30f, 50f });
+                    }
                 }
                  
                 detalle.WidthPercentage = 100;
@@ -1320,6 +1401,13 @@ namespace IatDteBridge
                             puntero = puntero + 1;
                             datosDetalle[puntero] = Convert.ToString(det.VlrCodigo);
                         }
+
+                        if (unidadMedida == "False")
+                        {
+                            puntero = puntero + 1;
+                            datosDetalle[puntero] = det.CodCatalog;
+
+                        }
                         //controla el largo de nombre item
                         if (det.NmbItem.Length <= 55)
                         {
@@ -1339,8 +1427,11 @@ namespace IatDteBridge
                         datosDetalle[puntero] = Convert.ToString(det.QtyItem);
                         if (plu != "False")
                         {
-                            puntero = puntero + 1;
-                            datosDetalle[puntero] = Convert.ToString(det.UnmdItem);
+                            if (unidadMedida == "True")
+                            {
+                                puntero = puntero + 1;
+                                datosDetalle[puntero] = Convert.ToString(det.UnmdItem);
+                            }
                         }
                         puntero = puntero + 1;
                         if (doc.PrnMtoNeto == "True")
@@ -1354,7 +1445,14 @@ namespace IatDteBridge
                         puntero = puntero + 1;
                         if (doc.PrnMtoNeto == "True")
                         {
-                            datosDetalle[puntero] = det.DescuentoMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+                            if (DescuentoPct == "False")
+                            {
+                                datosDetalle[puntero] = det.DescuentoMonto.ToString("N0", CultureInfo.CreateSpecificCulture("es-ES"));
+                            }
+                            else
+                            {
+                                datosDetalle[puntero] = det.DescuentoPct.ToString("N2", CultureInfo.CreateSpecificCulture("es-ES")) + "%";
+                            }
                         }
                         else
                         {
@@ -1390,7 +1488,8 @@ namespace IatDteBridge
                 int celdaIterador = 0;
                 int celdaDescr = 2; // columna nombre Producto
                 if (plu == "False") celdaDescr = 1;
-                        
+                if (unidadMedida == "False") celdaDescr = 3;
+
                 foreach (String a in datosDetalle)
                 {
                     PdfPCell celda = new PdfPCell(new Paragraph(a, fuenteNegra));

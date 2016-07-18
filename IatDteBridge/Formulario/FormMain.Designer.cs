@@ -322,9 +322,9 @@
             this.label5.ForeColor = System.Drawing.Color.Red;
             this.label5.Location = new System.Drawing.Point(769, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(165, 13);
+            this.label5.Size = new System.Drawing.Size(161, 13);
             this.label5.TabIndex = 35;
-            this.label5.Text = "VERSIÓN: 20160704_23:00";
+            this.label5.Text = "VERSIÓN: 20160718_1400";
             // 
             // button17
             // 
