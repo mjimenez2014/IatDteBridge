@@ -152,6 +152,7 @@ namespace IatDteBridge
             String mntexe = "<MntExe>" + doc.MntExe + "</MntExe>\n";
             if (doc.MntExe == 0)
                 mntexe = "";
+            if (doc.TipoDTE == 34) doc.TasaIVA = 0;
             String tasaiva = "<TasaIVA>" + doc.TasaIVA + "</TasaIVA>\n";
             if (doc.TasaIVA == 0)
                 tasaiva = "";

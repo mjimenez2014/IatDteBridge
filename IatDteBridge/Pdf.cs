@@ -167,7 +167,7 @@ namespace IatDteBridge
 
 
 
-            PdfPCell celdaFechaDoc = new PdfPCell(new Paragraph("Santiago, " + dia + " de " + mesletra + " de " + ano, fuenteRoja));
+            PdfPCell celdaFechaDoc = new PdfPCell(new Paragraph( doc.CiudadOrigen+", " + dia + " de " + mesletra + " de " + ano, fuenteRoja));
             celdaFechaDoc.Colspan = 3;
             celdaFechaDoc.HorizontalAlignment = 2;
             celdaFechaDoc.BorderWidth = 0;
@@ -413,6 +413,11 @@ namespace IatDteBridge
                 {
 
                     if (det.DscItem != "") det.NmbItem = det.NmbItem + "\n\r"+det.DscItem;
+                    if (plu == "True")
+                    {
+                        datosDetalle[puntero] = " ";
+                        puntero = puntero + 1;
+                    }
                     datosDetalle[puntero] = " ";
                     puntero = puntero + 1;
                     datosDetalle[puntero] = " ";
@@ -1131,7 +1136,7 @@ namespace IatDteBridge
                 int ano = fechaemis.Year;
 
 
-                PdfPCell celdaFechaDoc = new PdfPCell(new Paragraph("Santiago, " + dia + " de " + mesletra + " de " + ano, fuenteRoja));
+                PdfPCell celdaFechaDoc = new PdfPCell(new Paragraph(doc.CiudadOrigen+", " + dia + " de " + mesletra + " de " + ano, fuenteRoja));
                 celdaFechaDoc.Colspan = 3;
                 celdaFechaDoc.HorizontalAlignment = 2;
                 celdaFechaDoc.BorderWidth = 0;
@@ -1373,7 +1378,12 @@ namespace IatDteBridge
                 {
                     if (codigoreferencia == "2" && det.NmbItem.Length > 41)
                     {
-                       
+                        if (det.DscItem != "") det.NmbItem = det.NmbItem + "\n\r" + det.DscItem;
+                        if (plu == "True")
+                        {
+                            datosDetalle[puntero] = " ";
+                            puntero = puntero + 1;
+                        }
                         datosDetalle[puntero] = " ";
                         puntero = puntero + 1;
                         datosDetalle[puntero] = " ";

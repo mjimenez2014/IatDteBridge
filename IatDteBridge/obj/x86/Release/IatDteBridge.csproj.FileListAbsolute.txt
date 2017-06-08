@@ -36,6 +36,7 @@ C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridg
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\bin\Release\System.Runtime.xml
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\bin\Release\System.Threading.Tasks.xml
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Release\IatDteBridge.csproj.App.config
+C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Release\IatDteBridge.csprojResolveAssemblyReference.cache
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Release\IatDteBridge.Administracion.resources
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Release\IatDteBridge.FrmCaf.resources
 C:\Users\Mauricio\Documents\Visual Studio 2015\Projects\IatDteBridge\IatDteBridge\obj\x86\Release\IatDteBridge.FormAdminCaf.resources

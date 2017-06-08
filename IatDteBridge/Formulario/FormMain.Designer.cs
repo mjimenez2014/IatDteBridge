@@ -324,7 +324,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(161, 13);
             this.label5.TabIndex = 35;
-            this.label5.Text = "VERSIÓN: 20160718_1400";
+            this.label5.Text = "VERSIÓN: 20160921_1200";
             // 
             // button17
             // 
